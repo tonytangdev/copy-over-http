@@ -2,6 +2,7 @@
 import express from 'express'
 import { copyToClipboard } from './copy.js'
 import { writeEvent } from './keyboard.js'
+import { createQRCode } from './qrCode.js'
 const app = express()
 const port = 3000
 
@@ -30,4 +31,8 @@ app.get('/:text', (req, res) => {
 
 app.listen(port, () => {
   console.log(`Copy Over Http app listening at http://localhost:${port}`)
+
+
+
+  createQRCode(`http://localhost:${port}`)
 })
