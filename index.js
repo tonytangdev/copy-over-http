@@ -2,9 +2,10 @@
 import express from 'express'
 import { copyToClipboard } from './copy.js'
 import { writeEvent } from './keyboard.js'
+import { getLocalIPAddress } from './network.js'
 import { createQRCode } from './qrCode.js'
 const app = express()
-const port = 3000
+const port = process.env.PORT ?? 3000
 
 app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // for parsing application/json
@@ -30,9 +31,11 @@ app.get('/:text', (req, res) => {
 })
 
 app.listen(port, () => {
-  console.log(`Copy Over Http app listening at http://localhost:${port}`)
+  const hostAddress = getLocalIPAddress()
 
+  const url = `http://${hostAddress}:${port}`
 
+  console.log(`Copy Over Http app listening at ${url}`)
 
-  createQRCode(`http://localhost:${port}`)
+  createQRCode(url)
 })
