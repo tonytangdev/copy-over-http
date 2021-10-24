@@ -8,7 +8,7 @@ export function createQRCode(url) {
             console.error(error)
           } else {
            // the *entire* stdout and stderr (buffered)
-           console.log(`QR code : ${stdout}`)
+           console.log(`${stdout}`)
           }
     })
 }

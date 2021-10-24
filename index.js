@@ -37,5 +37,6 @@ app.listen(port, () => {
 
   console.log(`Copy Over Http app listening at ${url}`)
 
+  console.log('Local IP address QR code :')
   createQRCode(url)
 })
