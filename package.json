@@ -9,7 +9,7 @@
     "node-key-sender": "^1.0.11"
   },
   "scripts": {
-    "start": "node index.js"
+    "start": "node --experimental-json-modules index.js"
   },
   "devDependencies": {
     "@types/clipboardy": "^2.0.1"
