@@ -15,10 +15,16 @@ app.use(express.urlencoded({ extended: true }))
 app.use(express.json()) // for parsing application/json
 
 app.get('/', (req, res) => {
-  res.send('Hello to Copy Over Http !')
+  const __dirname = path.resolve(path.dirname(''))
+  res.sendFile('client/index.html', { root: __dirname })
 })
 
-app.get('/copy', (req, res) => {
+app.get('/script.js', (req, res) => {
+  const __dirname = path.resolve(path.dirname(''))
+  res.sendFile('client/script.js', { root: __dirname })
+})
+
+app.post('/copy', (req, res) => {
   const { text } = req.body
 
   res.send(copyAndWrite(text))
@@ -29,13 +35,12 @@ app.get('/:text', (req, res) => {
 
   res.send(copyAndWrite(text))
 })
-
 app.listen(port, () => {
   const hostAddress = getLocalIPAddress()
 
   const url = `http://${hostAddress}:${port}`
 
-  console.log(`Copy Over Http app listening at ${url}`)
+  console.log(`Copy Over HTTP app listening at ${url}`)
 
   console.log('Local IP address QR code :')
   createQRCode(url)
