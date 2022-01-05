@@ -5,6 +5,10 @@ Launches an express server which copies into the clipboard and types any text se
 
 I created this tool to not have to type manually the code needed for MFA (Multi Factor Authentication).
 
+## Docker
+### Build the image
+docker-compose up
+
 ## HOW TO
 Install dependencies : `yarn` or `npm install`
 
